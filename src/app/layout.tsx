@@ -2,6 +2,7 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import '@/styles/styles.scss'
+import '@/styles/global.css'
 import { Header } from "@/components/Header"
 import { Toaster } from "@/components/ui/toaster"
 import { Providers } from "@/components/Providers"

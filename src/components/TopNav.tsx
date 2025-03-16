@@ -12,8 +12,8 @@ interface Props {
 const TopNavOne: React.FC<Props> = ({ props, slogan }) => {
     const [isOpenLanguage, setIsOpenLanguage] = useState(false)
     const [isOpenCurrence, setIsOpenCurrence] = useState(false)
-    const [language, setLanguage] = useState('English')
-    const [currence, setCurrence] = useState('USD')
+    const [language, setLanguage] = useState('India')
+    const [currence, setCurrence] = useState('INR')
 
     return (
         <>

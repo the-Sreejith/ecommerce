@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-commerce Application
+
+A modern e-commerce platform built with Next.js, TypeScript, Tailwind CSS, and Prisma.
+
+## Features
+
+- **User Features**
+  - Browse products with filtering and sorting
+  - View product details
+  - Add products to cart
+  - Manage cart (update quantities, remove items)
+  - Checkout process
+  
+- **Admin Features**
+  - Manage products (add, edit, delete)
+  - View orders
+
+## Tech Stack
+
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: PostgreSQL
+- **ORM**: Prisma
+- **Authentication**: NextAuth.js
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 18+ and npm
+- PostgreSQL database
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ecommerce.git
+   cd ecommerce
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. Set up environment variables:
+   Create a `.env.local` file with the following variables:
+   ```
+   DATABASE_URL="postgresql://username:password@localhost:5432/ecommerce"
+   NEXTAUTH_SECRET="your-secret-key"
+   NEXTAUTH_URL="http://localhost:3000"
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Initialize the database:
+   ```bash
+   npx prisma migrate dev --name init
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Seed the database with initial data:
+   ```bash
+   npx prisma db seed
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+6. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+7. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/app` - Next.js app router pages and API routes
+- `/components` - Reusable UI components
+- `/lib` - Utility functions and shared code
+- `/prisma` - Prisma schema and migrations
+- `/types` - TypeScript type definitions
+
+## API Routes
+
+- **GET /api/products** - Get all products (with optional filtering)
+- **POST /api/products** - Create a new product (admin only)
+- **GET /api/products/[id]** - Get a specific product
+- **PUT /api/products/[id]** - Update a product (admin only)
+- **DELETE /api/products/[id]** - Delete a product (admin only)
+- **GET /api/orders** - Get all orders (admin) or user's orders
+- **POST /api/orders** - Create a new order
+
+

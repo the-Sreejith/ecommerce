@@ -2,12 +2,10 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import '@/styles/styles.scss'
-import '@/styles/global.css'
-import { Header } from "@/components/Header"
-import { Toaster } from "@/components/ui/toaster"
-import { Providers } from "@/components/Providers"
-import { ToastProvider } from "@/components/ui/toast-context" 
-import  TopNav  from '@/components/TopNav'
+import TopNav from '@/components/TopNav'
+import Footer from "@/components/Footer"
+import Navbar from "@/components/Navbar"
+import GlobalProvider from "./GlobalProvider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,22 +20,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Providers>
-          <ToastProvider>
-            <div className="flex min-h-screen flex-col">
-              <TopNav props="style-one bg-black" slogan="New customers save 10% with the code GET10"/>
-              <Header />
-              <main className="flex-1">{children}</main>
-              <footer className="border-t py-6 text-center text-sm text-gray-500">
-                © {new Date().getFullYear()} E-commerce Store. All rights reserved.
-              </footer>
-            </div>
-            <Toaster />
-          </ToastProvider>
-        </Providers>
-      </body>
-    </html>
+    <GlobalProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <TopNav props="style-three bg-white" />
+          <div id="header" className='relative w-full'>
+            <Navbar props="bg-white" />
+          </div>
+          {children}
+          <div id="header" className='relative w-full'>
+
+            <Footer />
+          </div>
+        </body>
+      </html>
+    </GlobalProvider>
   )
 }

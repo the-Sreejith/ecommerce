@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { useCart } from "@/lib/contexts/CartContext";
+import { useCart } from "@/contexts/CartContext";
 import { formatCurrency } from "@/lib/utils";
 import { Minus, Plus, Trash2, ArrowRight, ShoppingCart } from "lucide-react";
 

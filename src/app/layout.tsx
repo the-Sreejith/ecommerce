@@ -1,11 +1,20 @@
 // layout.tsx
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import '@/styles/styles.scss'
-import TopNav from '@/components/TopNav'
-import Footer from "@/components/Footer"
-import Navbar from "@/components/Navbar"
-import GlobalProvider from "./GlobalProvider"
+import '@/styles/globals.css'
+import '@/styles/modal.css'
+import '@/styles/header.css'
+// import '@/styles/footer.css'
+import GlobalProvider from "@/app/GlobalProvider"
+import ModalCart from '@/components/Modal/ModalCart'
+import ModalWishlist from '@/components/Modal/ModalWishlist'
+import ModalSearch from '@/components/Modal/ModalSearch'
+import ModalQuickview from '@/components/Modal/ModalQuickview'
+import ModalCompare from '@/components/Modal/ModalCompare'
+import CountdownTimeType from '@/types/CountdownType'
+import { countdownTime } from '@/store/countdownTime'
+
+const serverTimeLeft: CountdownTimeType = countdownTime();
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -23,15 +32,12 @@ export default function RootLayout({
     <GlobalProvider>
       <html lang="en">
         <body className={inter.className}>
-          <TopNav props="style-three bg-white" />
-          <div id="header" className='relative w-full'>
-            <Navbar props="bg-white" />
-          </div>
           {children}
-          <div id="header" className='relative w-full'>
-
-            <Footer />
-          </div>
+          <ModalCart serverTimeLeft={serverTimeLeft} />
+          <ModalWishlist />
+          <ModalSearch />
+          <ModalQuickview />
+          <ModalCompare />
         </body>
       </html>
     </GlobalProvider>

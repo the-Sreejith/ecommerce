@@ -1,0 +1,24 @@
+.footer .footer-main {
+    background: var(--surface1);
+    color: var(--white);
+}
+
+.footer .has-line-before::before {
+    background-color: var(--white);
+}
+
+.footer .input-block input {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.footer .text-black {
+    color: var(--white);
+}
+
+.footer .text-secondary {
+    color: var(--white);
+}
+
+.footer svg {
+    fill: var(--white);
+}
